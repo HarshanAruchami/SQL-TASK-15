@@ -79,11 +79,12 @@ select * from students;
 
 --c. Savepoint - commit update and insert statements, rollback delete statement
 BEGIN TRANSACTION 
-DELETE students WHERE sid=2;
-SAVE TRANSACTION transpoint
 INSERT INTO students 
 VALUES('nakul','BCOM',2023)
 update students set yearofcompletion=2002 where sid=1;
+SAVE TRANSACTION transpoint
+DELETE students WHERE sid=2;
 ROLLBACK TRANSACTION transpoint
 commit
+
 SELECT * FROM students; 
